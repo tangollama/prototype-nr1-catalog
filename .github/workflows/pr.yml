@@ -1,0 +1,21 @@
+name: PR
+on: pull_request
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Checkout submodule
+    strategy:
+      matrix:
+        node: [ '10', '8' ]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Verify repo
+    - run:
+    - name: Setup node
+    - uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node }}
+    - name: Install dependencies
+    - run: npm install
+    - name: Lint check
+    - run: npm run eslint-check
